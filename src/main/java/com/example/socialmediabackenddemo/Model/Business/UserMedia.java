@@ -1,4 +1,4 @@
-package com.example.socialmediabackenddemo.model.business;
+package com.example.socialmediabackenddemo.Model.Business;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
