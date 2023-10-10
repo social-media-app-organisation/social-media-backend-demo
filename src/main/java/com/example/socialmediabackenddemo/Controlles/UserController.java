@@ -23,7 +23,13 @@ public class UserController {
         LoginResponse loginResponse = loginEventHandler.handle(loginCommand);
         return new ResponseEntity<>(loginResponse, loginResponse.getStatus());
     }
-    @GetMapping({"/test"})
+    @GetMapping({"/test_role"})
+    ResponseEntity<String> test_r(@RequestParam String roleName)  {
+        userService.testRoole(roleName);
+        return new ResponseEntity<>("test succes", HttpStatus.OK);
+    }
+
+    @GetMapping({"/test_user"})
     ResponseEntity<String> test()  {
         userService.testttt();
         return new ResponseEntity<>("test succes", HttpStatus.OK);

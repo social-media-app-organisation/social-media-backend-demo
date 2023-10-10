@@ -27,6 +27,6 @@ public class User {
     private UserMedia userMedia;
 
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id",nullable = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 }
