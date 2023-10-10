@@ -1,6 +1,7 @@
 package com.example.socialmediabackenddemo.Model.Services.Application.LoginApplication.DTOs;
 
 import com.example.socialmediabackenddemo.Model.Business.Gender;
+import com.example.socialmediabackenddemo.Model.Business.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 public class UserDTO {
-    private Long id;
     private String name;
     private LocalDate birthDay;
     private String username;
