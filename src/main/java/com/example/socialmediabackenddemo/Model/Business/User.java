@@ -1,5 +1,5 @@
-package com.example.socialmediabackenddemo.model.business;
-import jakarta.persistence.*;
+package com.example.socialmediabackenddemo.Model.Business;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +27,6 @@ public class User {
     private UserMedia userMedia;
 
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id",nullable = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 }

@@ -1,5 +1,5 @@
-package com.example.socialmediabackenddemo.model.business;
-import jakarta.persistence.*;
+package com.example.socialmediabackenddemo.Model.Business;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
