@@ -34,7 +34,7 @@ public class RegistrationEventHandler extends BasicHandler<VerificationEmailComm
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
-    public RegisterResponse handle(VerificationEmailCommand command) throws Exception {
+    public RegisterResponse handle(VerificationEmailCommand command) {
         RegisterResponse response = new RegisterResponse();
         Map<String, Claim> payload = testValidityTokenAndGetUser(command,response);
         if(payload!=null){
@@ -44,7 +44,7 @@ public class RegistrationEventHandler extends BasicHandler<VerificationEmailComm
             String gender = command.getGender();
             String phone = command.getPhone();
             String username = command.getUsername();
-            LocalDate birthDate = command.getBirthDate();
+            LocalDate birthDate = LocalDate.parse(command.getBirthDate());
             Role userRole = roleService.findRoleByName("user");
             if (!userService.ExistEmail(email)) {
                 User user = new User();
