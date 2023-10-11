@@ -16,5 +16,9 @@ public class SocialMediaBackendDemoApplication {
     public String sayHello() {
         return String.format("Hello again!");
     }
+    @GetMapping("/Good")
+    public String Good() {
+        return String.format("Goooood!");
+    }
 
 }
