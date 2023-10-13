@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Map;
 @Service
 @Transactional
@@ -87,12 +88,20 @@ public class RegistrationEventHandler extends BasicHandler<VerificationEmailComm
 
         try {
             DecodedJWT decoded = verifier.verify(token);
+            if(isJWTExpired(decoded)){
+                response.Error("token Expired !");
+                return null;
+            }
             return decoded.getClaims();
 
         } catch (JWTVerificationException ex) {
-            response.Error(" verification token failed");
+            response.Error("verification token failed !");
             return null;
         }
+    }
+    boolean isJWTExpired(DecodedJWT decodedJWT) {
+        Date expiresAt = decodedJWT.getExpiresAt();
+        return expiresAt.before(new Date());
     }
     Gender convertStringToEnum(String gender){
         return gender.equals("FEMALE") ? Gender.FEMALE
