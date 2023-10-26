@@ -21,4 +21,5 @@ public class RoleService {
         role.setRoleName(roleName);
         return roleRepository.save(role);
     }
+
 }

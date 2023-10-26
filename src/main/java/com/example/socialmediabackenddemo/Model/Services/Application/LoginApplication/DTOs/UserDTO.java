@@ -13,13 +13,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 public class UserDTO {
+    private long id;
     private String name;
     private LocalDate birthDay;
     private String username;
     private String email;
     private String phone;
     private Gender gender;
-    private String password;
     private String bio;
     private String role;
 }
