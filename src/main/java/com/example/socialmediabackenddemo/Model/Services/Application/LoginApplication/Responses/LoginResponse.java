@@ -14,12 +14,18 @@ import lombok.ToString;
 @ToString
 public class LoginResponse extends BasicResponse {
     private String token;
-    private UserDTO userDTO;
+    private UserDTO user;
     public void setData(User sourceUser, String sourceToken){
-        userDTO =  new UserDTO(
-                sourceUser.getName(), sourceUser.getBirthDay(),sourceUser.getUsername()
-                ,sourceUser.getEmail(),sourceUser.getPhone(),sourceUser.getGender(),sourceUser.getPassword(),
-                sourceUser.getBio(), sourceUser.getRole().getRoleName()
+        user =  new UserDTO(
+                sourceUser.getId(),
+                sourceUser.getName(),
+                sourceUser.getBirthDay(),
+                sourceUser.getUsername(),
+                sourceUser.getEmail(),
+                sourceUser.getPhone(),
+                sourceUser.getGender(),
+                sourceUser.getBio(),
+                sourceUser.getRole().getRoleName()
         );
         token=sourceToken;
     }

@@ -37,17 +37,18 @@ public class RegistrationEventHandler extends BasicHandler<VerificationEmailComm
     @Override
     public RegisterResponse handle(VerificationEmailCommand command) {
         RegisterResponse response = new RegisterResponse();
-        Map<String, Claim> payload = testValidityTokenAndGetUser(command,response);
+        Map<String, Claim> payload = testValidityTokenAndGetPayload(command,response);
         if(payload!=null){
             String name = payload.get("name").as(String.class);
             String password = payload.get("password").as(String.class);
             String email = payload.get("email").as(String.class);
-            String gender = command.getGender();
-            String phone = command.getPhone();
-            String username = command.getUsername();
-            LocalDate birthDate = LocalDate.parse(command.getBirthDate());
-            Role userRole = roleService.findRoleByName("user");
             if (!userService.ExistEmail(email)) {
+                String gender = command.getGender();
+                String phone = command.getPhone();
+                String username = command.getUsername();
+                LocalDate birthDate = LocalDate.parse(command.getBirthDate());
+                Role userRole = roleService.findRoleByName("user");
+
                 User user = new User();
                 user.setName(name);
                 user.setUsername(username);
@@ -75,7 +76,7 @@ public class RegistrationEventHandler extends BasicHandler<VerificationEmailComm
     }
 
 
-    private Map<String, Claim> testValidityTokenAndGetUser(VerificationEmailCommand command,RegisterResponse response){
+    private Map<String, Claim> testValidityTokenAndGetPayload(VerificationEmailCommand command,RegisterResponse response){
         String token = command.getToken();
 
         if (token == null || token.length() <= 0) {
