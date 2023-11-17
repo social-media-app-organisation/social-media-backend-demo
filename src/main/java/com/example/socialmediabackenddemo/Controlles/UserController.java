@@ -11,7 +11,6 @@ import com.example.socialmediabackenddemo.Model.Services.Application.RegisterApp
 import com.example.socialmediabackenddemo.Model.Services.Application.RegisterApplication.Responses.RegisterResponse;
 import com.example.socialmediabackenddemo.Model.Services.Common.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +44,8 @@ public class UserController {
         return new ResponseEntity<>(response, response.getStatus());
     }
     @PostMapping("/test-akeneo")
-    ResponseEntity<String> testAkeneo(@RequestBody String str){
-        return new ResponseEntity<>(str, HttpStatus.OK);
+    String testAkeneo(@RequestBody String str) {
+        System.out.println("Received request body: " + str);
+        return "Request received and printed: " + str;
     }
 }
