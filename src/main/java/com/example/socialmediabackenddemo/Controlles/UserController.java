@@ -45,7 +45,7 @@ public class UserController {
         return new ResponseEntity<>(response, response.getStatus());
     }
     @PostMapping("/test-akeneo")
-    ResponseEntity<String> testAkeneo(String str){
+    ResponseEntity<String> testAkeneo(@RequestBody String str){
         return new ResponseEntity<>(str, HttpStatus.OK);
     }
 }
